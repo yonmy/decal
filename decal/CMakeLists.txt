@@ -16,11 +16,14 @@ ADD_LIBRARY (decal STATIC
 )
 
 # include_directories
-include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
+include_directories ("${CMAKE_CURRENT_SOURCE_DIR}")
 
 # properties
-set_target_properties(decal PROPERTIES
-    CXX_STANDARD 14
+set_target_properties (decal PROPERTIES
+    CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     CXX_EXTENSIONS OFF
 )
+
+# output
+set (LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../lib/${CMAKE_BUILD_TYPE}/)
