@@ -15,28 +15,17 @@
 namespace decal
 {
 
-#if _MSC_VER
-
-template<class _Ty> inline
+template<class _Ty,
+	std::size_t _Index = (sizeof(_Ty) * 8)> inline
 _Ty _Floor_power_of_two(_Ty _X, std::integral_constant<std::size_t, (sizeof(_Ty) * 8)>)
 	{
 	return (_X - (_X >> 1));
 	}
 
-#endif
-
 template<class _Ty,
 	std::size_t _Index> inline
-	_Ty _Floor_power_of_two(_Ty _X, std::integral_constant<std::size_t, _Index>)
+typename std::enable_if_t<(_Index < (sizeof(_Ty) * 8)), _Ty> _Floor_power_of_two(_Ty _X, std::integral_constant<std::size_t, _Index>)
 	{
-#if _MSC_VER
-	static_assert(_Index < (sizeof(_Ty) * 8), "_Index error");
-#else
-	if (_Index >= (sizeof(_Ty) * 8))
-		{
-		return (_X - (_X >> 1));
-		}
-#endif
 	return _Floor_power_of_two(_X | (_X >> _Index), std::integral_constant<std::size_t, _Index * 2>());
 	}
 

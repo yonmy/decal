@@ -8,4 +8,6 @@
 
 #pragma once
 
+#include <type_traits>
+
 #include "gtest/gtest.h"
