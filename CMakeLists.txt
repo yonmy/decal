@@ -7,6 +7,7 @@ project ("decal-all")
 
 # Include thirdparty projects
 add_subdirectory ("thirdparty/googletest")
+add_subdirectory ("thirdparty/imgui")
 
 # Include sub projects.
 add_subdirectory ("decal")
